@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 13:20:00 by piotrwojnar       #+#    #+#             */
-/*   Updated: 2024/05/20 16:15:05 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/20 17:17:31 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,15 @@
 
 void	quick_sort(t_stack_node **a, t_stack_node **b, int size)
 {
-	if (size < 2) return ;
+	int	median;
+	int	count_a;
+	int	count_b;
+	int	total;
+	int	i;
+
+	i = 0;
+	if (size < 2)
+		return ;
 	if (size == 3)
 	{
 		sort_three(a);
@@ -25,13 +33,12 @@ void	quick_sort(t_stack_node **a, t_stack_node **b, int size)
 	}
 	if (size == 5)
 	{
-		sort_five(a,b);
+		sort_five(a, b);
 		return ;
 	}
-	int	median = find_median(*a, size);
-	int	countA = 0;
-	int	total = size;
-
+	median = find_median(*a, size);
+	count_a = 0;
+	total = size;
 	while (size-- > 0)
 	{
 		if ((*a)->value < median)
@@ -41,20 +48,21 @@ void	quick_sort(t_stack_node **a, t_stack_node **b, int size)
 		else
 		{
 			ra(a);
-			countA++;
+			count_a++;
 		}
 	}
-	for	(int i = 0; i < countA; i++)
+	while (i < count_a)
 	{
 		rra(a);
+		i++;
 	}
-	quick_sort(a, b, countA);
-	int countB = total - countA;
-	while (countB-- > 0)
+	quick_sort(a, b, count_a);
+	count_b = total - count_a;
+	while (count_b-- > 0)
 	{
 		pa(a, b);
 	}
-	quick_sort(a, b, total - countA);
+	quick_sort(a, b, total - count_a);
 }
 
 int	main(int argc, char **argv)
@@ -66,13 +74,14 @@ int	main(int argc, char **argv)
 	int				len;
 	int 			val;
 	int 			i;
+	char			**values;
 
 	i = 0;
 	if (argc < 2)
 		return (1);
 	a = NULL;
 	b = NULL;
-	char **values = ft_split(argv[1], ' ');
+	values = ft_split(argv[1], ' ');
 	if (values == NULL)
 	{
 		write(2, "Error\n", 6);
