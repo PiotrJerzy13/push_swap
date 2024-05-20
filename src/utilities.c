@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:16:43 by piotrwojnar       #+#    #+#             */
-/*   Updated: 2024/05/15 18:08:44 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/20 14:21:25 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,51 @@ int	stack_length(t_stack_node *head)
 		current = current->fwd;
 	}
 	return (length);
+}
+int	dll_swap(t_stack_node **current)
+{
+	t_stack_node	*first;
+	t_stack_node	*second;
+
+	first = *current;
+	second = first->fwd;
+	if (!first || !second)
+		return (0);
+	if (second->fwd)
+		second->fwd->bwd = first;
+	if (first->bwd)
+		first->bwd->fwd = second;
+	first->fwd = second->fwd;
+	second->bwd = first->bwd;
+	second->fwd = first;
+	first->bwd = second;
+	*current = second;
+	return (1);
+}
+
+void	free_array(char **array)
+{
+	int	i;
+
+	i = 0;
+	if (array == NULL)
+		return ;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
+bool	stack_ordered(t_stack_node *stack)
+{
+	if (stack == NULL)
+		return (true);
+	while (stack->fwd)
+	{
+		if (stack->value > stack->fwd->value)
+			return (false);
+		stack = stack->fwd;
+	}
+	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 13:20:00 by piotrwojnar       #+#    #+#             */
-/*   Updated: 2024/05/14 16:56:17 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/20 14:37:51 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,45 +15,19 @@
 #include <stdlib.h>
 #include <limits.h>
 
-int	find_median(t_stack_node *head, int size)
-{
-	int				*values;
-	t_stack_node	*current;
-	int				key;
-	int				j;
-	int				median;
-	int				i;
-
-	i = 0;
-	values = malloc(sizeof(int) * size);
-	current = head;
-	while (i < size)
-	{
-		values[i] = current->value;
-		current = current->fwd;
-		i++;
-	}
-	i = 1;
-	while (i < size)
-	{
-		key = values[i];
-		j = i - 1;
-		while (j >= 0 && values[j] > key)
-		{
-			values[j + 1] = values[j];
-			j--;
-		}
-		values[j + 1] = key;
-		i++;
-	}
-	median = values[size / 2];
-	free(values);
-	return (median);
-}
-
 void	quick_sort(t_stack_node **a, t_stack_node **b, int size)
 {
 	if (size < 2) return ;
+	 if (size == 3)
+	{
+        sort_three(a);
+        return;
+    }
+		 if (size == 5)
+	{
+        sort_five(a,b);
+        return;
+    }
     int median = find_median(*a, size);
     int countA = 0; // Count elements in stack a that are < median
     int total = size; // Total elements to process
@@ -103,9 +77,18 @@ int	main(int argc, char **argv)
 	a = NULL;
 	b = NULL;
 	char **values = ft_split(argv[1], ' ');
+	if (values == NULL)
+	{
+        write(2, "Error\n", 6);
+        return (1);
+    }
 	while (values[i])
 	{
 		val = atoi(values[i]);
+		if (!handle_errors(&a, values[i], val))
+		{
+        free_errors(&a, values, argc);
+        }
 		new_node = create_node(val);
 		if (!a)
 			a = new_node;
@@ -130,19 +113,4 @@ int	main(int argc, char **argv)
 	printf("\n");
 	free_stack(&a);
 	return (0);
-}
-
-void	free_array(char **array)
-{
-	int	i;
-
-	i = 0;
-	if (array == NULL)
-		return ;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
 }
