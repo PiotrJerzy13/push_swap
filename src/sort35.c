@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 21:37:50 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/05/20 16:56:42 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/20 20:15:41 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,40 +90,4 @@ void	sort_five(t_stack_node **a, t_stack_node **b)
 	sort_three(a);
 	pa(a, b);
 	pa(a, b);
-}
-
-int	find_median(t_stack_node *head, int size)
-{
-	int				*values;
-	t_stack_node	*current;
-	int				key;
-	int				j;
-	int				i;
-	int				median;
-
-	current = head;
-	values = malloc(sizeof(int) * size);
-	i = 0;
-	while (i < size)
-	{
-		values[i] = current->value;
-		current = current->fwd;
-		i++;
-	}
-	i = 1;
-	while (i < size)
-	{
-		key = values[i];
-		j = i - 1;
-		while (j >= 0 && values[j] > key)
-		{
-			values[j + 1] = values[j];
-			j--;
-		}
-		values[j + 1] = key;
-		i++;
-	}
-	median = values[size / 2];
-	free(values);
-	return (median);
 }

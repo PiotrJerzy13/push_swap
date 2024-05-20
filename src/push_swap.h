@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 13:35:55 by piotrwojnar       #+#    #+#             */
-/*   Updated: 2024/05/20 15:56:55 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/20 20:15:45 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void			sort_five(t_stack_node **a, t_stack_node **b);
 int				find_median(t_stack_node *head, int size);
 void			rrb(t_stack_node **head);
 void			rrr(t_stack_node **a, t_stack_node **b);
+int				*populate_array(t_stack_node *head, int size);
 
 #endif // PUSH_SWAP_H

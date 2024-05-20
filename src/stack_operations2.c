@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 15:53:35 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/05/20 15:59:12 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/20 20:15:34 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,24 @@ void	rrr(t_stack_node **a, t_stack_node **b)
 	rra(a);
 	rrb(b);
 	printf("rrr\n");
+}
+
+int	*populate_array(t_stack_node *head, int size)
+{
+	int				*values;
+	int				i;
+	t_stack_node	*current;
+
+	values = malloc(sizeof(int) * size);
+	if (!values)
+		return (NULL);
+	current = head;
+	i = 0;
+	while (i < size)
+	{
+		values[i] = current->value;
+		current = current->fwd;
+		i++;
+	}
+	return (values);
 }
