@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 13:20:00 by piotrwojnar       #+#    #+#             */
-/*   Updated: 2024/05/20 14:37:51 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/20 16:15:05 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,48 +18,44 @@
 void	quick_sort(t_stack_node **a, t_stack_node **b, int size)
 {
 	if (size < 2) return ;
-	 if (size == 3)
+	if (size == 3)
 	{
-        sort_three(a);
-        return;
-    }
-		 if (size == 5)
+		sort_three(a);
+		return ;
+	}
+	if (size == 5)
 	{
-        sort_five(a,b);
-        return;
-    }
-    int median = find_median(*a, size);
-    int countA = 0; // Count elements in stack a that are < median
-    int total = size; // Total elements to process
+		sort_five(a,b);
+		return ;
+	}
+	int	median = find_median(*a, size);
+	int	countA = 0;
+	int	total = size;
 
-    // Move elements >= median to stack b
-    while (size-- > 0) {
-        if ((*a)->value < median) {
-            pb(a, b);
-        } else {
-            ra(a);
-            countA++;
-        }
-    }
-
-    // Restore order of stack a
-    for (int i = 0; i < countA; i++) {
-        rra(a);
-    }
-
-    // Recursive call to sort the left half
-    quick_sort(a, b, countA);
-
-    // Move elements from stack b back to stack a for sorting
-    int countB = total - countA;
-    while (countB-- > 0) {
-        pa(a, b);
-    }
-
-    // Recursive call to sort the right half
-    quick_sort(a, b, total - countA);
+	while (size-- > 0)
+	{
+		if ((*a)->value < median)
+		{
+			pb(a, b);
+		}
+		else
+		{
+			ra(a);
+			countA++;
+		}
+	}
+	for	(int i = 0; i < countA; i++)
+	{
+		rra(a);
+	}
+	quick_sort(a, b, countA);
+	int countB = total - countA;
+	while (countB-- > 0)
+	{
+		pa(a, b);
+	}
+	quick_sort(a, b, total - countA);
 }
-
 
 int	main(int argc, char **argv)
 {
@@ -79,16 +75,16 @@ int	main(int argc, char **argv)
 	char **values = ft_split(argv[1], ' ');
 	if (values == NULL)
 	{
-        write(2, "Error\n", 6);
-        return (1);
-    }
+		write(2, "Error\n", 6);
+		return (1);
+	}
 	while (values[i])
 	{
 		val = atoi(values[i]);
 		if (!handle_errors(&a, values[i], val))
 		{
-        free_errors(&a, values, argc);
-        }
+			free_errors(&a, values, argc);
+		}
 		new_node = create_node(val);
 		if (!a)
 			a = new_node;

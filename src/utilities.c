@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:16:43 by piotrwojnar       #+#    #+#             */
-/*   Updated: 2024/05/20 14:21:25 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:18:57 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	stack_length(t_stack_node *head)
 	}
 	return (length);
 }
+
 int	dll_swap(t_stack_node **current)
 {
 	t_stack_node	*first;
@@ -79,6 +80,7 @@ void	free_array(char **array)
 	}
 	free(array);
 }
+
 bool	stack_ordered(t_stack_node *stack)
 {
 	if (stack == NULL)

@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:40:07 by piotrwojnar       #+#    #+#             */
-/*   Updated: 2024/05/15 18:04:22 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:54:22 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,27 +92,3 @@ void	rra(t_stack_node **head)
 	*head = last;
 	printf("rra\n");
 }
-void rrb(t_stack_node **head)
-{
-    t_stack_node *last;
-
-    last = *head;
-    if (!*head || !(*head)->fwd)
-        return;
-    while (last->fwd)
-        last = last->fwd;
-    last->bwd->fwd = NULL;
-    last->fwd = *head;
-    last->bwd = NULL;
-    (*head)->bwd = last;
-    *head = last;
-    printf("rrb\n");
-}
-void rrr(t_stack_node **a, t_stack_node **b)
-{
-    rra(a);
-    rrb(b);
-    printf("rrr\n");
-}
-
-
