@@ -6,13 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:16:43 by piotrwojnar       #+#    #+#             */
-/*   Updated: 2024/05/20 20:15:32 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:36:08 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 t_stack_node	*create_node(int value)
 {

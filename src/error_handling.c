@@ -6,12 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 22:49:10 by piotrwojnar       #+#    #+#             */
-/*   Updated: 2024/05/20 20:15:48 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:36:27 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <limits.h>
 
 int	error_nondigit(char *str)
 {

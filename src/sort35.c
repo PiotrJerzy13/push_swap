@@ -6,12 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 21:37:50 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/05/20 20:15:41 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:36:17 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <limits.h>
 
 static t_stack_node	*return_biggest(t_stack_node *stack)
 {

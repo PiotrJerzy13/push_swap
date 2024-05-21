@@ -6,6 +6,7 @@ LIBFTDIR = ./libtft
 
 SRCS = src/stack_operations.c \
 	   src/stack_operations2.c \
+	   src/stack_operations3.c \
        src/main.c \
        src/utilities.c \
        src/error_handling.c \

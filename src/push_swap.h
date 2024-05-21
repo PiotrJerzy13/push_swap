@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 13:35:55 by piotrwojnar       #+#    #+#             */
-/*   Updated: 2024/05/20 20:15:45 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:35:16 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <unistd.h>
+# include <stdio.h>
 
 // Node structure for a doubly linked list
 typedef struct s_stack_node
@@ -55,6 +56,10 @@ void			sort_five(t_stack_node **a, t_stack_node **b);
 int				find_median(t_stack_node *head, int size);
 void			rrb(t_stack_node **head);
 void			rrr(t_stack_node **a, t_stack_node **b);
-int				*populate_array(t_stack_node *head, int size);
+void			populate_array(t_stack_node *head, int *values, int size);
+void			insertion_sort(int *values, int size);
+void			p(t_stack_node **a, t_stack_node **b, int median, int *count_a);
+void			append_node(t_stack_node **a, t_stack_node *new_node);
+void			print_stack(t_stack_node *a);
 
 #endif // PUSH_SWAP_H
