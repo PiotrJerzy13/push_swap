@@ -16,12 +16,10 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-all: $(NAME)
-
-$(NAME): $(OBJS) libft
+$(NAME): $(OBJS) $(LIBFTDIR)/$(LIBFTNAME)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFTDIR) -lft
 
-libft:
+$(LIBFTDIR)/$(LIBFTNAME):
 	@$(MAKE) -C $(LIBFTDIR)
 	@echo "Library libft.a built successfully."
 

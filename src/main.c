@@ -6,11 +6,16 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 13:20:00 by piotrwojnar       #+#    #+#             */
-/*   Updated: 2024/05/21 15:36:23 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/21 20:03:53 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// void	leaks()
+// {
+// 	system("leaks push_swap");
+// }
 
 int	find_median(t_stack_node *head, int size)
 {
@@ -50,11 +55,11 @@ void	quick_sort(t_stack_node **a, t_stack_node **b, int size)
 int	process_values(t_stack_node **a, char **values, int i)
 {
 	t_stack_node	*new_node;
-	int				val;
+	long			val;
 
 	while (values[i])
 	{
-		val = atoi(values[i]);
+		val = ft_atol(values[i]);
 		if (!handle_errors(a, values[i], val))
 		{
 			free_errors(a, values, i);
@@ -103,18 +108,18 @@ int	main(int argc, char **argv)
 		return (1);
 	if (!initialize_stack(&a, argv[1]))
 		return (1);
+	if (stack_ordered(a))
+	{
+		free_stack(&a);
+		return (0);
+	}
 	len = stack_length(a);
 	if (len == 3)
-	{
 		sort_three(&a);
-	}
 	else if (len == 5)
-	{
 		sort_five(&a, &b);
-	}
 	else
 		quick_sort(&a, &b, len);
-	print_stack(a);
 	free_stack(&a);
 	return (0);
 }

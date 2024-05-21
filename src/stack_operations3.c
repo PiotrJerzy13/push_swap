@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:28:12 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/05/21 15:36:10 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/21 18:41:10 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,29 @@ void	append_node(t_stack_node **a, t_stack_node *new_node)
 	new_node->bwd = last;
 }
 
-void	print_stack(t_stack_node *a)
+long	ft_atol(const char *str)
 {
-	t_stack_node	*current;
+	size_t	i;
+	int		pos_sign;
+	long	output;
 
-	current = a;
-	printf("Sorted values: ");
-	while (current)
+	i = 0;
+	pos_sign = 1;
+	output = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	while (str[i] == '+' || str[i] == '-')
 	{
-		printf("%d ", current->value);
-		current = current->fwd;
+		if (str[i] == '-')
+			pos_sign = -1;
+		if (str[i + 1] == '+' || str[i + 1] == '-')
+			return (0);
+		i++;
 	}
-	printf("\n");
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		output = (output * 10) + (str[i] - '0');
+		i++;
+	}
+	return (output * pos_sign);
 }
