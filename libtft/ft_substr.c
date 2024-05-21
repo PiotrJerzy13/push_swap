@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:59:21 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/16 20:53:05 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/21 20:36:48 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,3 @@ char	*ft_strdup(char const *src)
 	dest[i] = '\0';
 	return (dest);
 }
-
