@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 22:49:10 by piotrwojnar       #+#    #+#             */
-/*   Updated: 2024/05/21 15:36:27 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:59:06 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ void	free_stack(t_stack_node **stack)
 	t_stack_node	*current;
 	t_stack_node	*tmp;
 
+	current = NULL;
+	if (!stack || !*stack)
+		return ;
 	current = *stack;
 	while (current)
 	{
@@ -75,8 +78,9 @@ bool	handle_errors(t_stack_node **a, char *argv, long n)
 
 void	free_errors(t_stack_node **a, char **argv, int argc)
 {
-	free_stack(a);
-	if (argc == 2)
+	if (a)
+		free_stack(a);
+	if (argc == 2 && argv)
 		free_array(argv);
 	write(2, "Error\n", 6);
 	exit(1);

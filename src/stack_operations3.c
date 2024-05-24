@@ -6,22 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:28:12 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/05/21 18:41:10 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:43:47 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	append_node(t_stack_node **a, t_stack_node *new_node)
-{
-	t_stack_node	*last;
-
-	last = *a;
-	while (last->fwd)
-		last = last->fwd;
-	last->fwd = new_node;
-	new_node->bwd = last;
-}
 
 long	ft_atol(const char *str)
 {
@@ -48,4 +37,44 @@ long	ft_atol(const char *str)
 		i++;
 	}
 	return (output * pos_sign);
+}
+
+static void	reverse_rotate(t_stack_node **head)
+{
+	t_stack_node	*pre_last;
+	t_stack_node	*last;
+
+	if (!*head || !(*head)->fwd)
+		return ;
+	pre_last = NULL;
+	last = *head;
+	while (last->fwd)
+	{
+		pre_last = last;
+		last = last->fwd;
+	}
+	pre_last->fwd = NULL;
+	last->bwd = NULL;
+	last->fwd = *head;
+	*head = last;
+	(*head)->fwd->bwd = *head;
+}
+
+void	rra(t_stack_node **a)
+{
+	reverse_rotate(a);
+	write(1, "rra\n", 4);
+}
+
+void	rrb(t_stack_node **b)
+{
+	reverse_rotate(b);
+	write(1, "rrb\n", 4);
+}
+
+void	rrr(t_stack_node **a, t_stack_node **b)
+{
+	reverse_rotate(a);
+	reverse_rotate(b);
+	write(1, "rrr\n", 4);
 }

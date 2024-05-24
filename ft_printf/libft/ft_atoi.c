@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 16:59:21 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/05/21 20:36:48 by pwojnaro         ###   ########.fr       */
+/*   Created: 2024/03/13 22:59:52 by pwojnaro          #+#    #+#             */
+/*   Updated: 2024/03/13 23:00:11 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char const *src)
+int	ft_atoi(const char *str)
 {
-	int		len;
-	int		i;
-	char	*dest;
+	int	nbr;
+	int	sign;
 
-	len = ft_strlen(src);
-	dest = (char *)malloc(sizeof(char) * (len + 1));
-	if (dest == NULL)
+	nbr = 0;
+	sign = 1;
+	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
+		str++;
+	if (*str == '+' || *str == '-')
 	{
-		return (NULL);
+		if (*str == '-')
+			sign = -1;
+		str++;
 	}
-	i = 0;
-	while (src[i])
+	while (*str >= '0' && *str <= '9')
 	{
-		dest[i] = src[i];
-		i++;
+		nbr = nbr * 10 + (*str - '0');
+		str++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (nbr * sign);
 }

@@ -6,86 +6,66 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:40:07 by piotrwojnar       #+#    #+#             */
-/*   Updated: 2024/05/21 15:36:15 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:38:24 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_stack_node **head)
+void	push_r(t_stack_node **stack, t_stack_node *cheap, char st_na)
 {
-	if (!*head || !(*head)->fwd)
-		return ;
-	dll_swap(head);
-	printf("sa\n");
+	while (cheap && *stack != cheap)
+	{
+		if (st_na == 'a')
+		{
+			if (cheap && cheap->above_median)
+				ra(stack);
+			else if (cheap && !cheap->above_median)
+				rra(stack);
+		}
+		else if (st_na == 'b')
+		{
+			if (cheap && cheap->above_median)
+				rb(stack);
+			else if (cheap && !cheap->above_median)
+				rrb(stack);
+		}
+	}
 }
 
-void	pa(t_stack_node **a, t_stack_node **b)
-{
-	t_stack_node	*first_b;
-
-	first_b = *b;
-	if (!*b)
-		return ;
-	*b = (*b)->fwd;
-	if (*b)
-		(*b)->bwd = NULL;
-	first_b->fwd = *a;
-	if (*a)
-		(*a)->bwd = first_b;
-	*a = first_b;
-	printf("pa\n");
-}
-
-void	pb(t_stack_node **a, t_stack_node **b)
-{
-	t_stack_node	*first_a;
-
-	first_a = *a;
-	if (!*a)
-		return ;
-	*a = (*a)->fwd;
-	if (*a)
-		(*a)->bwd = NULL;
-	first_a->fwd = *b;
-	if (*b)
-		(*b)->bwd = first_a;
-	*b = first_a;
-	printf("pb\n");
-}
-
-void	ra(t_stack_node **head)
+static void	rotate(t_stack_node **head)
 {
 	t_stack_node	*first;
 	t_stack_node	*second;
 
-	first = *head;
-	second = first->fwd;
 	if (!*head || !(*head)->fwd)
 		return ;
+	first = *head;
+	second = (*head)->fwd;
+	*head = second;
+	second->bwd = NULL;
 	while (second->fwd)
 		second = second->fwd;
-	*head = first->fwd;
-	(*head)->bwd = NULL;
 	second->fwd = first;
-	first->fwd = NULL;
 	first->bwd = second;
-	printf("ra\n");
+	first->fwd = NULL;
 }
 
-void	rra(t_stack_node **head)
+void	ra(t_stack_node **a)
 {
-	t_stack_node	*last;
+	rotate(a);
+	write(1, "ra\n", 3);
+}
 
-	last = *head;
-	if (! *head || !(*head)->fwd)
-		return ;
-	while (last->fwd)
-		last = last->fwd;
-	last->bwd->fwd = NULL;
-	last->fwd = *head;
-	last->bwd = NULL;
-	(*head)->bwd = last;
-	*head = last;
-	printf("rra\n");
+void	rb(t_stack_node **b)
+{
+	rotate(b);
+	write(1, "rb\n", 3);
+}
+
+void	rr(t_stack_node **a, t_stack_node **b)
+{
+	rotate(a);
+	rotate(b);
+	write(1, "rr\n", 3);
 }

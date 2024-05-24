@@ -6,95 +6,90 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 15:53:35 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/05/21 15:36:13 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/24 19:00:04 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rrb(t_stack_node **head)
+void	append_node(t_stack_node **a, t_stack_node *new_node)
 {
 	t_stack_node	*last;
 
-	last = *head;
-	if (!*head || !(*head)->fwd)
-		return ;
+	last = *a;
 	while (last->fwd)
 		last = last->fwd;
-	last->bwd->fwd = NULL;
-	last->fwd = *head;
-	last->bwd = NULL;
-	(*head)->bwd = last;
-	*head = last;
-	printf("rrb\n");
+	last->fwd = new_node;
+	new_node->bwd = last;
 }
 
-void	rrr(t_stack_node **a, t_stack_node **b)
+static void	swap(t_stack_node **head)
 {
-	rra(a);
-	rrb(b);
-	printf("rrr\n");
+	t_stack_node	*tmp;
+
+	if (!*head || !(*head)->fwd)
+		return ;
+	tmp = *head;
+	*head = tmp->fwd;
+	(*head)->bwd = NULL;
+	tmp->fwd = (*head)->fwd;
+	tmp->bwd = *head;
+	(*head)->fwd = tmp;
+	if (tmp->fwd)
+		tmp->fwd->bwd = tmp;
 }
 
-void	populate_array(t_stack_node *head, int *values, int size)
+void	sa(t_stack_node **a)
 {
-	t_stack_node	*current;
-	int				i;
+	swap(a);
+	write(1, "sa\n", 3);
+}
 
-	i = 0;
-	current = head;
-	while (i < size)
+t_stack_node	*return_smallest(t_stack_node *stack)
+{
+	long			smallest_value;
+	t_stack_node	*smallest_node;
+
+	if (!stack)
+		return (NULL);
+	smallest_value = INT_MAX;
+	smallest_node = stack;
+	while (stack)
 	{
-		values[i] = current->value;
-		current = current->fwd;
-		i++;
+		if (stack->value < smallest_value)
+		{
+			smallest_node = stack;
+			smallest_value = stack->value;
+		}
+		stack = stack->fwd;
 	}
+	return (smallest_node);
 }
 
-void	insertion_sort(int *values, int size)
+int	init_stack_no_split(t_stack_node **a, int argc, char **argv)
 {
-	int	i;
-	int	j;
-	int	key;
+	int				i;
+	long			val;
+	t_stack_node	*new_node;
 
 	i = 1;
-	while (i < size)
+	while (i < argc)
 	{
-		key = values[i];
-		j = i - 1;
-		while (j >= 0 && values[j] > key)
+		val = ft_atol(argv[i]);
+		if (!handle_errors(a, argv[i], val))
 		{
-			values[j + 1] = values[j];
-			j--;
+			free_errors(a, NULL, argc);
 		}
-		values[j + 1] = key;
-		i++;
-	}
-}
-
-void	p(t_stack_node **a, t_stack_node **b, int median, int *count_a)
-{
-	int	size;
-	int	i;
-
-	size = *count_a;
-	*count_a = 0;
-	while (size-- > 0)
-	{
-		if ((*a)->value < median)
+		new_node = create_node(val);
+		if (!new_node)
 		{
-			pb(a, b);
+			free_errors(a, NULL, argc);
 		}
+		if (!(*a))
+			*a = new_node;
 		else
-		{
-			ra(a);
-			(*count_a)++;
-		}
-	}
-	i = 0;
-	while (i < *count_a)
-	{
-		rra(a);
+			append_node(a, new_node);
 		i++;
 	}
+	return (1);
 }

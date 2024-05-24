@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 22:59:52 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/05/21 18:19:06 by pwojnaro         ###   ########.fr       */
+/*   Created: 2024/03/17 20:11:27 by pwojnaro          #+#    #+#             */
+/*   Updated: 2024/03/22 10:51:14 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	ft_atoi(const char *str)
-{
-	int	nbr;
-	int	sign;
+# include "../libft/libft.h"
+# include <stdarg.h>
 
-	nbr = 0;
-	sign = 1;
-	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
-		str++;
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		nbr = nbr * 10 + (*str - '0');
-		str++;
-	}
-	return (nbr * sign);
-}
+int		ft_printf(const char *format_str, ...);
+int		ft_putunsignednbr_fd(unsigned int n, int fd);
+int		print_hex(unsigned long number, int upper, int fd);
+
+#endif

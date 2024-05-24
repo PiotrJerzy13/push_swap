@@ -6,47 +6,42 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 13:20:00 by piotrwojnar       #+#    #+#             */
-/*   Updated: 2024/05/24 17:49:46 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/24 17:22:00 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// void	leaks()
+// {
+// 	system("leaks push_swap");
+// }
 
-
-int	find_median(t_stack_node *head, int size)
+void	set_target_node(t_stack_node *a, t_stack_node *b)
 {
-	int	median;
-	int	*values;
+	long			match;
+	t_stack_node	*current_a;
+	t_stack_node	*target_node;
 
-	values = malloc(sizeof(int) * size);
-	if (!values)
-		return (0);
-	populate_array(head, values, size);
-	insertion_sort(values, size);
-	median = values[size / 2];
-	free(values);
-	return (median);
-}
-
-void	quick_sort(t_stack_node **a, t_stack_node **b, int size)
-{
-	int	median;
-	int	count_a;
-	int	count_b;
-
-	if (size < 2)
-		return ;
-	median = find_median(*a, size);
-	count_a = size;
-	p(a, b, median, &count_a);
-	quick_sort(a, b, count_a);
-	count_b = size - count_a;
-	while (count_b-- > 0)
+	target_node = NULL;
+	while (b)
 	{
-		pa(a, b);
+		match = INT_MAX;
+		current_a = a;
+		while (current_a)
+		{
+			if (current_a->value > b->value && current_a->value < match)
+			{
+				match = current_a->value;
+				target_node = current_a;
+			}
+			current_a = current_a->fwd;
+		}
+		if (match == INT_MAX)
+			target_node = return_smallest(a);
+		b->target_node = target_node;
+		b = b->fwd;
 	}
-	quick_sort(a, b, size - count_a);
 }
 
 int	process_values(t_stack_node **a, char **values, int i)
@@ -77,7 +72,7 @@ int	process_values(t_stack_node **a, char **values, int i)
 	return (1);
 }
 
-int	initialize_stack(t_stack_node **a, char *input)
+int	initialize_stack_single(t_stack_node **a, char *input)
 {
 	char	**values;
 	int		result;
@@ -93,6 +88,21 @@ int	initialize_stack(t_stack_node **a, char *input)
 	return (result);
 }
 
+int	initialize_stack(t_stack_node **a, int argc, char **argv)
+{
+	if (argc == 2)
+	{
+		if (!initialize_stack_single(a, argv[1]))
+			return (0);
+	}
+	else
+	{
+		if (!init_stack_no_split(a, argc, argv))
+			return (0);
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
@@ -101,9 +111,9 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	if (argc < 2)
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
-	if (!initialize_stack(&a, argv[1]))
+	if (!initialize_stack(&a, argc, argv))
 		return (1);
 	if (stack_ordered(a))
 	{
@@ -113,10 +123,9 @@ int	main(int argc, char **argv)
 	len = stack_length(a);
 	if (len == 3)
 		sort_three(&a);
-	else if (len == 5)
-		sort_five(&a, &b);
 	else
-		quick_sort(&a, &b, len);
+		push_swap(&a, &b);
 	free_stack(&a);
+	free_stack(&b);
 	return (0);
 }
