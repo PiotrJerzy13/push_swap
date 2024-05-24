@@ -6,16 +6,13 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 13:20:00 by piotrwojnar       #+#    #+#             */
-/*   Updated: 2024/05/21 20:03:53 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/05/24 17:49:46 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// void	leaks()
-// {
-// 	system("leaks push_swap");
-// }
+
 
 int	find_median(t_stack_node *head, int size)
 {
