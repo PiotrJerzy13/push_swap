@@ -13,7 +13,7 @@ SOURCES = $(SRCDIR)/stack_operations1.c \
        $(SRCDIR)/stack_operations4.c \
        $(SRCDIR)/stack_operations5.c \
        $(SRCDIR)/stack_operations6.c \
-	   $(SRCDIR)/stack_operations7.c \
+	   $(SRCDIR)/calibration.c \
        $(SRCDIR)/push_swap.c \
 	   $(SRCDIR)/sort_three.c \
 	   $(SRCDIR)/error_handling.c \
