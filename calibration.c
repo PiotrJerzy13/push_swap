@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:32:28 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/21 13:32:35 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 18:16:21 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 int	calculate_price(t_stack_node *node, int len)
 {
-	if (node->median)
-		return (node->place);
+	if (node->above_median)
+		return (node->index);
 	else
-		return (len - node->place);
+		return (len - node->index);
 }
 
 void	reset_cheapest_flags(t_stack_node *b)
 {
 	while (b != NULL)
 	{
-		b->target = false;
+		b->cheapest = false;
 		b = b->fwd;
 	}
 }
@@ -38,9 +38,9 @@ t_stack_node	*find_cheapest_node(t_stack_node *b)
 	best_match_value = LONG_MAX;
 	while (b != NULL)
 	{
-		if (b->price < best_match_value)
+		if (b->push_price < best_match_value)
 		{
-			best_match_value = b->price;
+			best_match_value = b->push_price;
 			cheapest_node = b;
 		}
 		b = b->fwd;
@@ -56,7 +56,7 @@ void	set_cheapest(t_stack_node *b)
 		return ;
 	cheapest_node = find_min_price_node(b);
 	if (cheapest_node != NULL)
-		cheapest_node->target = true;
+		cheapest_node->cheapest = true;
 }
 
 void	set_price(t_stack_node *a, t_stack_node *b)

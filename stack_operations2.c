@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:06:34 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/17 20:07:01 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 19:48:43 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_stack_add_back(t_stack_node **lst, t_stack_node *new)
 	new->fwd = NULL;
 }
 
-void	stacks_rotat(t_stack_node **top)
+void	rotate(t_stack_node **top)
 {
 	t_stack_node	*stack;
 	t_stack_node	*stack2;
@@ -47,19 +47,19 @@ void	stacks_rotat(t_stack_node **top)
 
 void	ra(t_stack_node **a)
 {
-	stacks_rotat(a);
+	rotate(a);
 	write(1, "ra\n", 3);
 }
 
 void	rb(t_stack_node **b)
 {
-	stacks_rotat(b);
+	rotate(b);
 	write(1, "rb\n", 3);
 }
 
 void	rr(t_stack_node **a, t_stack_node **b)
 {
-	stacks_rotat(a);
-	stacks_rotat(b);
+	rotate(a);
+	rotate(b);
 	write(1, "rr\n", 3);
 }

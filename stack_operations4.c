@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 12:54:56 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/21 12:55:07 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 19:58:16 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ t_stack_node	*find_min_price_node(t_stack_node *head)
 	min_price = LONG_MAX;
 	while (head != NULL)
 	{
-		if (head->price < min_price)
+		if (head->push_price < min_price)
 		{
-			min_price = head->price;
+			min_price = head->push_price;
 			min_node = head;
 		}
 		head = head->fwd;

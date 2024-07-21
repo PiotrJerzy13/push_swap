@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: piotrwojnarowski <piotrwojnarowski@stud    +#+  +:+       +#+        */
+/*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 20:35:20 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/05/30 13:46:06 by piotrwojnar      ###   ########.fr       */
+/*   Updated: 2024/07/21 14:48:53 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # include <string.h>
 # include <limits.h>
 # include <stdarg.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 typedef struct s_list
 {
@@ -79,5 +83,7 @@ int		ft_putunsignednbr_fd(unsigned int n, int fd);
 int		ft_printf(const char *format_str, ...);
 int		print_hex(unsigned long number, int upper, int fd);
 int		handle_format(char specifier, va_list ap);
+int		ft_strleni(const char *str);
+char	*get_next_line(int fd);
 
 #endif

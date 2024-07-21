@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 21:35:35 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/17 21:41:42 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 20:03:26 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	transfer_nodes(t_stack_node **a, t_stack_node **b)
 	while (*b != NULL)
 	{
 		calibrate_nodes(*a, *b);
-		transfer_optimal_node(a, b);
+		move_opt_node(a, b);
 	}
 }
 
@@ -35,7 +35,7 @@ void	rotate_to_smallest(t_stack_node **a)
 	t_stack_node	*smallest;
 
 	smallest = return_smallest(*a);
-	if (smallest->median)
+	if (smallest->above_median)
 	{
 		while (*a != smallest)
 			ra(a);
@@ -60,7 +60,7 @@ void	calibrate_nodes(t_stack_node *a, t_stack_node *b)
 {
 	choose_stack(a);
 	choose_stack(b);
-	set_target(a, b);
-	set_value(a, b);
-	cheapest(b);
+	set_target_node(a, b);
+	set_price(a, b);
+	set_cheapest(b);
 }

@@ -6,13 +6,13 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 14:05:25 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/17 14:07:51 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 17:37:05 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	append(t_stack_node **a, t_stack_node *new_node)
+void	append_node(t_stack_node **a, t_stack_node *new_node)
 {
 	t_stack_node	*last;
 
@@ -87,11 +87,11 @@ void	choose_stack(t_stack_node *stack)
 	median = stack_length(stack) / 2;
 	while (stack)
 	{
-		stack->place = i;
+		stack->index = i;
 		if (i <= median)
-			stack->median = true;
+			stack->above_median = true;
 		else
-			stack->median = false;
+			stack->above_median = false;
 		stack = stack->fwd;
 		i++;
 	}

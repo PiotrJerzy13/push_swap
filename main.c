@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 16:19:56 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/17 16:20:06 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 20:06:19 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ void	calculate_price_node(t_stack_node *node, int len_a, int len_b)
 	if (!node)
 		return ;
 	price = 0;
-	if (node->median)
-		price = node->place;
+	if (node->above_median)
+		price = node->index;
 	else
-		price = len_b - node->place;
-	if (node->target_node->median)
-		price += node->target_node->place;
+		price = len_b - node->index;
+	if (node->target_node->above_median)
+		price += node->target_node->index;
 	else
-		price += len_a - node->target_node->place;
-	node->price = price;
+		price += len_a - node->target_node->index;
+	node->push_price = price;
 }
 
 int	process_values(t_stack_node **a, char **values, int i)
@@ -101,7 +101,7 @@ int	main(int argc, char **argv)
 		return (1);
 	if (!initialize_stack(&a, argc, argv))
 		return (1);
-	if (stack_ordered(a))
+	if (ordered(a))
 	{
 		release_stack(&a);
 		return (0);

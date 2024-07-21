@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 17:11:55 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/18 17:18:59 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 19:56:12 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ t_stack_node	*return_biggest(t_stack_node *stack)
 	biggest_value = INT_MIN;
 	while (stack)
 	{
-		if (stack->node > biggest_value)
+		if (stack->value > biggest_value)
 		{
 			biggest_node = stack;
-			biggest_value = stack->node;
+			biggest_value = stack->value;
 		}
 		stack = stack->fwd;
 	}
@@ -41,7 +41,7 @@ void	sort_three(t_stack_node **a)
 		ra(a);
 	else if ((*a)->fwd == biggest_node)
 		rra(a);
-	if ((*a)->node > (*a)->fwd->node)
+	if ((*a)->value > (*a)->fwd->value)
 		sa(a);
 }
 
@@ -49,7 +49,7 @@ t_stack_node	*find_smallest(t_stack_node *stack, t_stack_node *smallest)
 {
 	if (!stack)
 		return (smallest);
-	if (stack->node < smallest->node)
+	if (stack->value < smallest->value)
 		smallest = stack;
 	return (find_smallest(stack->fwd, smallest));
 }
@@ -70,7 +70,7 @@ t_stack_node	*create_node(int value)
 	{
 		exit(1);
 	}
-	new_node->node = value;
+	new_node->value = value;
 	new_node->fwd = NULL;
 	new_node->bwd = NULL;
 	return (new_node);

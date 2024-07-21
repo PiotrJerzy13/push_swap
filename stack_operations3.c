@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 21:33:54 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/17 21:34:04 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 19:46:48 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,19 @@ bool	ordered(t_stack_node *stack)
 {
 	if (stack == NULL || stack->fwd == NULL)
 		return (true);
-	if (stack->node > stack->fwd->node)
+	if (stack->value > stack->fwd->value)
 		return (false);
 	return (ordered(stack->fwd));
 }
 
-t_stack_node	*cheapest(t_stack_node *stack)
+t_stack_node	*return_cheapest(t_stack_node *stack)
 {
 	t_stack_node	*cheapest_node;
 
 	cheapest_node = NULL;
 	while (stack)
 	{
-		if (stack->target)
+		if (stack->cheapest)
 		{
 			cheapest_node = stack;
 			break ;

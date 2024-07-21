@@ -6,47 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:07:21 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/21 13:07:38 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 20:03:07 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	align_stack_a(t_stack_node **a, t_stack_node *target_node)
-{
-	while (*a != target_node)
-	{
-		if (target_node->median)
-			ra(a);
-		else
-			rra(a);
-	}
-}
-
-void	align_stack_b(t_stack_node **b, t_stack_node *cheapest)
-{
-	while (*b != cheapest)
-	{
-		if (cheapest->median)
-			rb(b);
-		else
-			rrb(b);
-	}
-}
-
-void	align(t_stack_node **a, t_stack_node **b, t_nodes *nodes)
-{
-	if (nodes->cheap->median && nodes->node->median)
-	{
-		while (*a != nodes->node && *b != nodes->cheap)
-			rr(a, b);
-	}
-	else if (!nodes->cheap->median && !nodes->node->median)
-	{
-		while (*a != nodes->node && *b != nodes->cheap)
-			rrr(a, b);
-	}
-}
 
 void	move_opt_node(t_stack_node **a, t_stack_node **b)
 {
@@ -57,14 +21,14 @@ void	move_opt_node(t_stack_node **a, t_stack_node **b)
 	target_node = cheapest->target_node;
 	while (*b != cheapest)
 	{
-		if (cheapest->median)
+		if (cheapest->above_median)
 			rb(b);
 		else
 			rrb(b);
 	}
 	while (*a != target_node)
 	{
-		if (target_node->median)
+		if (target_node->above_median)
 			ra(a);
 		else
 			rra(a);
@@ -85,9 +49,9 @@ void	set_target_node(t_stack_node *a, t_stack_node *b)
 		current_a = a;
 		while (current_a)
 		{
-			if (current_a->node > b->node)
+			if (current_a->value > b->value)
 			{
-				if (!target_node || current_a->node < target_node->node)
+				if (!target_node || current_a->value < target_node->value)
 				{
 					target_node = current_a;
 				}
@@ -99,4 +63,29 @@ void	set_target_node(t_stack_node *a, t_stack_node *b)
 		b->target_node = target_node;
 		b = b->fwd;
 	}
+}
+
+void	transfer_optimal_node(t_stack_node **a, t_stack_node **b)
+{
+	t_stack_node	*cheapest;
+
+	cheapest = return_cheapest(*b);
+	if (cheapest->above_median && cheapest->target_node->above_median)
+	{
+		while (*a != cheapest->target_node && *b != cheapest)
+			rr(a, b);
+		choose_stack(*a);
+		choose_stack(*b);
+	}
+	else if (!(cheapest->above_median)
+		&& !(cheapest->target_node->above_median))
+	{
+		while (*a != cheapest->target_node && *b != cheapest)
+			rrr(a, b);
+		choose_stack(*a);
+		choose_stack(*b);
+	}
+	move_ready(b, cheapest, 'b');
+	move_ready(a, cheapest->target_node, 'a');
+	pa(a, b);
 }
