@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:19:20 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/21 20:01:14 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 21:02:11 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,32 +50,4 @@ void	rrr(t_stack_node **a, t_stack_node **b)
 	reverse_r(a);
 	reverse_r(b);
 	write(1, "rrr\n", 4);
-}
-
-void	move_ready(t_stack_node **stack, t_stack_node *cheap, char st_na)
-{
-	int	is_median;
-
-	if (!stack || !*stack || !cheap)
-		return ;
-	is_median = cheap->above_median;
-	while (*stack != cheap)
-	{
-		if (st_na == 'a')
-		{
-			if (is_median)
-				ra(stack);
-			else
-				rra(stack);
-		}
-		else if (st_na == 'b')
-		{
-			if (is_median)
-				rb(stack);
-			else
-				rrb(stack);
-		}
-		else
-			return ;
-	}
 }

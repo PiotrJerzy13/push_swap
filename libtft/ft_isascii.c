@@ -6,9 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:31:20 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/14 20:39:38 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:12:10 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libtft.h"
 
 int	ft_isascii(int c)
 {

@@ -6,11 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 20:59:29 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/16 20:28:25 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:10:38 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 char	*ft_strdup(char const *src)
 {

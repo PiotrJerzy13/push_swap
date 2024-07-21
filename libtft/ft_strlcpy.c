@@ -6,11 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 16:28:23 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/14 18:51:10 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:10:26 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 {

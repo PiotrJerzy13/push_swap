@@ -6,11 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 22:47:29 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/13 22:47:43 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:09:51 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {

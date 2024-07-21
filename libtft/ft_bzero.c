@@ -6,11 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 18:21:31 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/13 20:49:43 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:12:22 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 void	ft_bzero(void *str, size_t n)
 {

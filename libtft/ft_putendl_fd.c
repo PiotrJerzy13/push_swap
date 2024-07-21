@@ -6,11 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 23:14:23 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/13 23:22:56 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:11:04 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 void	ft_putendl_fd(char *s, int fd)
 {

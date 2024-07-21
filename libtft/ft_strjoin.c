@@ -6,11 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:50:01 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/21 16:13:22 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:10:32 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

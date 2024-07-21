@@ -6,11 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:33:50 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/15 20:41:23 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:11:18 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

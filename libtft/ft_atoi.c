@@ -6,11 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 22:59:52 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/13 23:00:11 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:12:25 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 int	ft_atoi(const char *str)
 {

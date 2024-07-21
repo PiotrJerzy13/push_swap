@@ -6,11 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 22:49:51 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/13 22:50:48 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:10:14 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {

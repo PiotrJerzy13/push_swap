@@ -6,11 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 23:50:51 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/13 20:56:55 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:12:14 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 int	ft_isalpha(int c)
 {

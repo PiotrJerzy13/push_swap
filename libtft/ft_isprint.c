@@ -6,9 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:24:02 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/14 20:39:36 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:12:00 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libtft.h"
 
 int	ft_isprint(int c)
 {

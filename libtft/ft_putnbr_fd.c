@@ -6,11 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 23:39:34 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/21 21:58:49 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:11:00 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 int	ft_putnbr_fd(int n, int fd)
 {

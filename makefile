@@ -1,30 +1,15 @@
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I./include -I./libtft
-LDFLAGS = -Llibtft -lft
-
-# Directories
-SRCDIR = .
+CFLAGS = -Wall -Wextra -Werror -I./include -I./libtft
 
 # Source files
-SOURCES = $(SRCDIR)/stack_operations.c \
-          $(SRCDIR)/stack_operations2.c \
-          $(SRCDIR)/stack_operations3.c \
-          $(SRCDIR)/stack_operations4.c \
-          $(SRCDIR)/stack_operations5.c \
-          $(SRCDIR)/stack_operations6.c \
-          $(SRCDIR)/calibration.c \
-          $(SRCDIR)/push_swap.c \
-          $(SRCDIR)/sort_3.c \
-          $(SRCDIR)/errors.c \
-          $(SRCDIR)/main.c \
-          $(SRCDIR)/ft_split.c
+SOURCES = stack_operations.c stack_operations2.c stack_operations3.c stack_operations4.c stack_operations5.c stack_operations6.c push_swap.c sort_3.c errors.c main.c 
 
 # Build directory
 BUILD_DIR = build
 
 # Object files
-OBJECTS = $(SOURCES:$(SRCDIR)/%.c=$(BUILD_DIR)/%.o)
+OBJECTS = $(SOURCES:%.c=$(BUILD_DIR)/%.o)
 
 # Executable name
 EXECUTABLE = push_swap
@@ -34,15 +19,12 @@ all: $(EXECUTABLE)
 
 # Rule to create the executable
 $(EXECUTABLE): $(OBJECTS) libtft/libtft.a
-	$(CC) $(OBJECTS) -o $@ $(LDFLAGS)
+	$(CC) $(OBJECTS) -o $@ -L./libtft libtft/libtft.a
 
 # Rule to create object files in the build directory
-$(BUILD_DIR)/%.o: $(SRCDIR)/%.c | $(BUILD_DIR)
+$(BUILD_DIR)/%.o: %.c
+	@mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
-
-# Ensure build directory exists
-$(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
 
 # Ensure libtft is built
 libtft/libtft.a:
@@ -50,7 +32,7 @@ libtft/libtft.a:
 
 # Clean up build files
 clean:
-	rm -f $(BUILD_DIR)/*.o
+	rm -f $(OBJECTS) $(EXECUTABLE)
 	make -C libtft clean
 
 fclean: clean
@@ -60,3 +42,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+

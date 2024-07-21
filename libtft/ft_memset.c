@@ -6,11 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 18:11:43 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/13 20:53:20 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:11:13 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {

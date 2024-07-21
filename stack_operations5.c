@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:07:21 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/21 20:03:07 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 21:04:07 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,27 +65,29 @@ void	set_target_node(t_stack_node *a, t_stack_node *b)
 	}
 }
 
-void	transfer_optimal_node(t_stack_node **a, t_stack_node **b)
+void	set_cheapest(t_stack_node *b)
 {
-	t_stack_node	*cheapest;
+	t_stack_node	*cheapest_node;
 
-	cheapest = return_cheapest(*b);
-	if (cheapest->above_median && cheapest->target_node->above_median)
+	if (!b)
+		return ;
+	cheapest_node = find_min_price_node(b);
+	if (cheapest_node != NULL)
+		cheapest_node->cheapest = true;
+}
+
+void	set_price(t_stack_node *a, t_stack_node *b)
+{
+	int				len_a;
+	int				len_b;
+	t_stack_node	*current;
+
+	len_a = stack_length(a);
+	len_b = stack_length(b);
+	current = b;
+	while (current != NULL)
 	{
-		while (*a != cheapest->target_node && *b != cheapest)
-			rr(a, b);
-		choose_stack(*a);
-		choose_stack(*b);
+		calculate_price_node(current, len_a, len_b);
+		current = current->fwd;
 	}
-	else if (!(cheapest->above_median)
-		&& !(cheapest->target_node->above_median))
-	{
-		while (*a != cheapest->target_node && *b != cheapest)
-			rrr(a, b);
-		choose_stack(*a);
-		choose_stack(*b);
-	}
-	move_ready(b, cheapest, 'b');
-	move_ready(a, cheapest->target_node, 'a');
-	pa(a, b);
 }

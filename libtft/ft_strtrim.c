@@ -6,11 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 20:01:49 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/16 20:45:52 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:09:15 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 static int	ft_is_in_set(char c, const char *set)
 {

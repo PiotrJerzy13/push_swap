@@ -6,11 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:10:08 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/16 15:13:23 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:11:34 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 t_list	*ft_lstlast(t_list *lst)
 {

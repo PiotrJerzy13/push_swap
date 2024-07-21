@@ -6,11 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 21:55:46 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/14 21:14:40 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:11:21 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

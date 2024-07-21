@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_hex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: piotrwojnarowski <piotrwojnarowski@stud    +#+  +:+       +#+        */
+/*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 19:13:36 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/05/30 12:34:07 by piotrwojnar      ###   ########.fr       */
+/*   Updated: 2024/07/21 22:20:09 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 int	print_hex(unsigned long number, int upper, int fd)
 {

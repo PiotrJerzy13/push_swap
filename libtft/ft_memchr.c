@@ -6,11 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 19:22:33 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/16 19:40:44 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:11:24 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 void	*ft_memchr(const void *str, int c, size_t n)
 {

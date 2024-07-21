@@ -6,11 +6,11 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:35:26 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/03/13 22:23:28 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/21 22:09:06 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libtft.h"
 
 int	ft_toupper(int c)
 {
