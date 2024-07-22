@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 14:05:25 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/21 20:59:22 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/22 12:54:04 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,21 +78,25 @@ long	ft_atol(const char *str)
 
 void	choose_stack(t_stack_node *stack)
 {
-	int	median;
-	int	i;
+	int				median;
+	int				i;
+	int				length;
+	t_stack_node	*current;
 
-	i = 0;
 	if (!stack)
 		return ;
-	median = stack_length(stack) / 2;
-	while (stack)
+	length = stack_length(stack);
+	median = length / 2;
+	i = 0;
+	current = stack;
+	while (current)
 	{
-		stack->index = i;
+		current->index = i;
 		if (i <= median)
-			stack->above_median = true;
+			current->above_median = true;
 		else
-			stack->above_median = false;
-		stack = stack->fwd;
+			current->above_median = false;
+		current = current->fwd;
 		i++;
 	}
 }

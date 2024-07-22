@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:37:39 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/21 20:56:29 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/22 13:14:10 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,18 @@ int	has_nondigit(char *str)
 	int	idx;
 
 	idx = 0;
-	if ((str[idx] == '+' || str[idx] == '-')
-		&& !(str[idx + 1] >= '0' && str[idx + 1] <= '9'))
-		return (1);
 	if (str[idx] == '+' || str[idx] == '-')
 		idx++;
 	if (str[idx] == '0' && str[idx + 1] != '\0' && str[idx + 1] != ' ')
 		return (1);
 	while (str[idx])
 	{
-		if (!(str[idx] >= '0' && str[idx] <= '9'))
+		if (str[idx] < '0' || str[idx] > '9')
 			return (1);
 		idx++;
 	}
+	if (idx == 1 && (str[0] == '+' || str[0] == '-'))
+		return (1);
 	return (0);
 }
 

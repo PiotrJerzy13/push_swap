@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 13:07:21 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/21 21:04:07 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/22 12:21:20 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	move_opt_node(t_stack_node **a, t_stack_node **b)
 	t_stack_node	*target_node;
 
 	cheapest = return_cheapest(*b);
-	target_node = cheapest->target_node;
+	target_node = cheapest->target;
 	while (*b != cheapest)
 	{
 		if (cheapest->above_median)
@@ -39,28 +39,28 @@ void	move_opt_node(t_stack_node **a, t_stack_node **b)
 void	set_target_node(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*smallest_node;
-	t_stack_node	*current_a;
+	t_stack_node	*node_a;
 	t_stack_node	*target_node;
 
 	smallest_node = return_smallest(a);
 	while (b)
 	{
 		target_node = NULL;
-		current_a = a;
-		while (current_a)
+		node_a = a;
+		while (node_a)
 		{
-			if (current_a->value > b->value)
+			if (node_a->value > b->value)
 			{
-				if (!target_node || current_a->value < target_node->value)
+				if (!target_node || node_a->value < target_node->value)
 				{
-					target_node = current_a;
+					target_node = node_a;
 				}
 			}
-			current_a = current_a->fwd;
+			node_a = node_a->fwd;
 		}
 		if (!target_node)
 			target_node = smallest_node;
-		b->target_node = target_node;
+		b->target = target_node;
 		b = b->fwd;
 	}
 }

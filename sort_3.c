@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 17:11:55 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/21 20:59:08 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/22 13:06:17 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 
 t_stack_node	*return_biggest(t_stack_node *stack)
 {
-	int				biggest_value;
 	t_stack_node	*biggest_node;
 
 	if (!stack)
 		return (NULL);
-	biggest_value = INT_MIN;
+	biggest_node = stack;
+	stack = stack->fwd;
 	while (stack)
 	{
-		if (stack->value > biggest_value)
+		if (stack->value > biggest_node->value)
 		{
 			biggest_node = stack;
-			biggest_value = stack->value;
 		}
 		stack = stack->fwd;
 	}
@@ -35,11 +34,17 @@ t_stack_node	*return_biggest(t_stack_node *stack)
 void	sort_three(t_stack_node **a)
 {
 	t_stack_node	*biggest_node;
+	t_stack_node	*first;
+	t_stack_node	*second;
+	t_stack_node	*third;
 
 	biggest_node = return_biggest(*a);
-	if (*a == biggest_node)
+	first = *a;
+	second = first->fwd;
+	third = second->fwd;
+	if (first == biggest_node)
 		ra(a);
-	else if ((*a)->fwd == biggest_node)
+	else if (second == biggest_node)
 		rra(a);
 	if ((*a)->value > (*a)->fwd->value)
 		sa(a);

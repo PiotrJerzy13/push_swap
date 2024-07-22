@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 16:19:56 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/21 20:56:58 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/22 13:21:52 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	calculate_price_node(t_stack_node *node, int len_a, int len_b)
 		price = node->index;
 	else
 		price = len_b - node->index;
-	if (node->target_node->above_median)
-		price += node->target_node->index;
+	if (node->target->above_median)
+		price += node->target->index;
 	else
-		price += len_a - node->target_node->index;
+		price += len_a - node->target->index;
 	node->push_price = price;
 }
 

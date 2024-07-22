@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 14:06:40 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/21 21:12:56 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/22 12:20:22 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_stack_node
 	int					index;
 	int					push_price;
 	bool				above_median;
-	struct s_stack_node	*target_node;
+	struct s_stack_node	*target;
 	struct s_stack_node	*fwd;
 	struct s_stack_node	*bwd;
 }	t_stack_node;
