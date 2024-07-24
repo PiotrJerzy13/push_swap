@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./include -I./libtft
 
 # Source files
-SOURCES = stack_operations.c stack_operations2.c stack_operations3.c stack_operations4.c stack_operations5.c stack_operations6.c push_swap.c sort_3.c errors.c main.c 
+SOURCES = stack_operations.c stack_analysis.c stack_analysis2.c stack_helpers.c stack_initialization.c stack_rotation.c stack_rotation2.c stack_utilis.c push_swap.c sort_3.c errors.c main.c 
 
 # Build directory
 BUILD_DIR = build

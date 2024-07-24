@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 14:06:40 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/22 12:20:22 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/24 18:37:18 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <unistd.h>
-# include "../libtft/libft.h"
+# include "../libtft/libtft.h"
 
 // Node structure for a doubly linked list
 typedef struct s_stack_node
@@ -93,5 +93,7 @@ t_stack_node	*return_smallest(t_stack_node *stack);
 
 // Node calibration
 void			calibrate_nodes(t_stack_node *a, t_stack_node *b);
+int				is_number(const char *str);
+void			split_error_exit(t_stack_node **a, char **split);
 
 #endif // PUSH_SWAP_H
