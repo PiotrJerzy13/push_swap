@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:00:17 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/24 19:00:25 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/24 19:49:02 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ void	split_error_exit(t_stack_node **a, char **split)
 		release_stack(a);
 	if (split)
 		free_array(split);
-	write(2, "Error: Invalid input\n", 21);
-	exit(1);
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
 }

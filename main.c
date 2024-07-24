@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 16:19:56 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/22 13:21:52 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/24 19:47:36 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,23 @@ int	initialize_stack_single(t_stack_node **a, char *input)
 {
 	char	**values;
 	int		result;
+	int		i;
 
 	values = ft_split(input, ' ');
 	if (values == NULL)
 	{
-		free_errors(a, values, 0);
+		split_error_exit(a, values);
 		return (0);
+	}
+	i = 0;
+	while (values[i])
+	{
+		if (!is_number(values[i]))
+		{
+			split_error_exit(a, values);
+			return (0);
+		}
+		i++;
 	}
 	result = process_values(a, values, 0);
 	free_array(values);
