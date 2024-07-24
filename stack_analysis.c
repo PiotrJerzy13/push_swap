@@ -1,44 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_operations3.c                                :+:      :+:    :+:   */
+/*   stack_analysis.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 21:33:54 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/21 21:00:19 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/24 18:53:15 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	push_stack(t_stack_node **dst, t_stack_node **src)
-{
-	t_stack_node	*number_to_push;
-
-	if (!src || !*src)
-		return ;
-	number_to_push = *src;
-	*src = number_to_push->fwd;
-	if (*src)
-		(*src)->bwd = NULL;
-	number_to_push->fwd = *dst;
-	if (*dst)
-		(*dst)->bwd = number_to_push;
-	*dst = number_to_push;
-}
-
-void	pa(t_stack_node **a, t_stack_node **b)
-{
-	push_stack(a, b);
-	write(1, "pa\n", 3);
-}
-
-void	pb(t_stack_node **a, t_stack_node **b)
-{
-	push_stack(b, a);
-	write(1, "pb\n", 3);
-}
 
 bool	ordered(t_stack_node *stack)
 {
@@ -47,6 +19,25 @@ bool	ordered(t_stack_node *stack)
 	if (stack->value > stack->fwd->value)
 		return (false);
 	return (ordered(stack->fwd));
+}
+
+t_stack_node	*find_min_price_node(t_stack_node *head)
+{
+	t_stack_node	*min_node;
+	long			min_price;
+
+	min_node = NULL;
+	min_price = LONG_MAX;
+	while (head != NULL)
+	{
+		if (head->push_price < min_price)
+		{
+			min_price = head->push_price;
+			min_node = head;
+		}
+		head = head->fwd;
+	}
+	return (min_node);
 }
 
 t_stack_node	*return_cheapest(t_stack_node *stack)
@@ -64,4 +55,44 @@ t_stack_node	*return_cheapest(t_stack_node *stack)
 		stack = stack->fwd;
 	}
 	return (cheapest_node);
+}
+
+void	set_target_node(t_stack_node *a, t_stack_node *b)
+{
+	t_stack_node	*smallest_node;
+	t_stack_node	*node_a;
+	t_stack_node	*target_node;
+
+	smallest_node = return_smallest(a);
+	while (b)
+	{
+		target_node = NULL;
+		node_a = a;
+		while (node_a)
+		{
+			if (node_a->value > b->value)
+			{
+				if (!target_node || node_a->value < target_node->value)
+				{
+					target_node = node_a;
+				}
+			}
+			node_a = node_a->fwd;
+		}
+		if (!target_node)
+			target_node = smallest_node;
+		b->target = target_node;
+		b = b->fwd;
+	}
+}
+
+void	set_cheapest(t_stack_node *b)
+{
+	t_stack_node	*cheapest_node;
+
+	if (!b)
+		return ;
+	cheapest_node = find_min_price_node(b);
+	if (cheapest_node != NULL)
+		cheapest_node->cheapest = true;
 }
