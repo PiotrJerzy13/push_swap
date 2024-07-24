@@ -6,11 +6,39 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 12:54:56 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/21 21:00:46 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/24 18:58:04 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	init_stack_no_split(t_stack_node **a, int argc, char **argv)
+{
+	int				i;
+	long			val;
+	t_stack_node	*new_node;
+
+	i = 1;
+	while (i < argc)
+	{
+		val = ft_atol(argv[i]);
+		if (!handle_errors(a, argv[i], val))
+		{
+			free_errors(a, NULL, argc);
+		}
+		new_node = create_node(val);
+		if (!new_node)
+		{
+			free_errors(a, NULL, argc);
+		}
+		if (!(*a))
+			*a = new_node;
+		else
+			append_node(a, new_node);
+		i++;
+	}
+	return (1);
+}
 
 void	free_errors(t_stack_node **a, char **argv, int argc)
 {
@@ -20,62 +48,4 @@ void	free_errors(t_stack_node **a, char **argv, int argc)
 		free_array(argv);
 	write(2, "Error\n", 6);
 	exit(1);
-}
-
-void	free_array(char **array)
-{
-	char	**current;
-
-	if (!array)
-		return ;
-	current = array;
-	while (*current)
-	{
-		free(*current);
-		current++;
-	}
-	free(array);
-}
-
-void	sa(t_stack_node **a)
-{
-	swap(a);
-	write(1, "sa\n", 3);
-}
-
-void	swap(t_stack_node **head)
-{
-	t_stack_node	*first;
-	t_stack_node	*second;
-
-	if (!head || !*head || !(*head)->fwd)
-		return ;
-	first = *head;
-	second = first->fwd;
-	*head = second;
-	first->fwd = second->fwd;
-	if (second->fwd)
-		second->fwd->bwd = first;
-	second->fwd = first;
-	second->bwd = NULL;
-	first->bwd = second;
-}
-
-t_stack_node	*find_min_price_node(t_stack_node *head)
-{
-	t_stack_node	*min_node;
-	long			min_price;
-
-	min_node = NULL;
-	min_price = LONG_MAX;
-	while (head != NULL)
-	{
-		if (head->push_price < min_price)
-		{
-			min_price = head->push_price;
-			min_node = head;
-		}
-		head = head->fwd;
-	}
-	return (min_node);
 }
