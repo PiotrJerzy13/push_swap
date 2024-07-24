@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 17:11:55 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/22 13:06:17 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/07/24 18:45:40 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,10 @@ void	sort_three(t_stack_node **a)
 	t_stack_node	*biggest_node;
 	t_stack_node	*first;
 	t_stack_node	*second;
-	t_stack_node	*third;
 
 	biggest_node = return_biggest(*a);
 	first = *a;
 	second = first->fwd;
-	third = second->fwd;
 	if (first == biggest_node)
 		ra(a);
 	else if (second == biggest_node)
