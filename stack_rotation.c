@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_operations2.c                                :+:      :+:    :+:   */
+/*   stack_rotation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:06:34 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/21 19:48:43 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:59:10 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,4 @@ void	rb(t_stack_node **b)
 {
 	rotate(b);
 	write(1, "rb\n", 3);
-}
-
-void	rr(t_stack_node **a, t_stack_node **b)
-{
-	rotate(a);
-	rotate(b);
-	write(1, "rr\n", 3);
 }

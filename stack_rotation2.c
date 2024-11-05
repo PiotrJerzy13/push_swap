@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 18:50:27 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/24 18:50:29 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:59:26 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,4 @@ void	rrb(t_stack_node **b)
 {
 	reverse_r(b);
 	write(1, "rrb\n", 4);
-}
-
-void	rrr(t_stack_node **a, t_stack_node **b)
-{
-	reverse_r(a);
-	reverse_r(b);
-	write(1, "rrr\n", 4);
 }

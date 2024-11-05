@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 14:06:40 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/24 18:37:18 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:59:41 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,11 @@ void			free_errors(t_stack_node **a, char **argv, int argc);
 void			free_array(char **array);
 
 // Stack operations
-void			rotate(t_stack_node **head);
+void			rotate(t_stack_node **top);
 void			ra(t_stack_node **a);
 void			rb(t_stack_node **b);
-void			rr(t_stack_node **a, t_stack_node **b);
 void			rra(t_stack_node **a);
 void			rrb(t_stack_node **b);
-void			rrr(t_stack_node **a, t_stack_node **b);
 void			push_stack(t_stack_node **dst, t_stack_node **src);
 void			pa(t_stack_node **a, t_stack_node **b);
 void			pb(t_stack_node **a, t_stack_node **b);
