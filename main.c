@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 16:19:56 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/07/24 19:47:36 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/11/05 19:37:27 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,19 @@ int	initialize_stack(t_stack_node **a, int argc, char **argv)
 	return (1);
 }
 
+void	print_stack(t_stack_node *stack)
+{
+	t_stack_node	*current;
+
+	current = stack;
+	while (current)
+	{
+		printf("%d ", current->value);
+		current = current->fwd;
+	}
+	printf("\n");
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
@@ -122,6 +135,8 @@ int	main(int argc, char **argv)
 		sort_three(&a);
 	else
 		push_swap(&a, &b);
+	printf("The stack has been sorted successfully.\nSorted stack: ");
+	print_stack(a);
 	release_stack(&a);
 	release_stack(&b);
 	return (0);

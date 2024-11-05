@@ -6,7 +6,7 @@
 /*   By: pwojnaro <pwojnaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 14:06:40 by pwojnaro          #+#    #+#             */
-/*   Updated: 2024/11/05 18:59:41 by pwojnaro         ###   ########.fr       */
+/*   Updated: 2024/11/05 19:35:50 by pwojnaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <unistd.h>
+# include <stdio.h>
 # include "../libtft/libtft.h"
 
 // Node structure for a doubly linked list
