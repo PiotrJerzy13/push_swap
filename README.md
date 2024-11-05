@@ -9,7 +9,6 @@ This project implements a sorting algorithm using two stacks and a limited set o
 - [Features](#features)
 - [Sorting Logic](#sorting-logic)
 - [Instructions](#instructions)
-- [Example Usage](#example-usage)
 
 ## About the Project
 The **push_swap** project is a C program that receives a list of integers as arguments and outputs a sequence of commands to sort the integers. The sorting process must use a minimal number of operations, making it an efficient, optimized solution for data sorting using stacks.
@@ -41,15 +40,3 @@ The sorting algorithm includes the following steps:
    ./push_swap <list of integers>
 
 The output will be a series of commands that sorts the input stack.
-
-## Example Usage
-
-$ ./push_swap 2 1 3 6 5 8
-sa
-pb
-pb
-pb
-sa
-pa
-pa
-pa
